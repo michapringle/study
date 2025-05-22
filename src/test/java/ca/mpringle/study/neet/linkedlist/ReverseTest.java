@@ -4,27 +4,27 @@ import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
-import java.util.List;
 import java.util.stream.Stream;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNull;
 
 final class ReverseTest {
 
     @ParameterizedTest
     @MethodSource("reverseListData")
-    void carFleetTest(final Reverse.ListNode input, Reverse.ListNode expected) {
+    void carFleetTest(final ListNode input, ListNode expected) {
 
-        Reverse.ListNode actual = Reverse.reverseList(input);
+        ListNode actual = Reverse.reverseList(input);
 
-        while (actual.next != null && expected.next != null) {
-            assertEquals(expected.value, actual.value);
+        while (actual != null && expected != null) {
+            assertEquals(expected.val, actual.val);
             actual = actual.next;
             expected = expected.next;
         }
 
-        assertNull(actual.next);
-        assertNull(expected.next);
+        assertNull(actual);
+        assertNull(expected);
     }
 
     static Stream<Arguments> reverseListData() {
@@ -32,12 +32,16 @@ final class ReverseTest {
 
         return Stream.of(
                 Arguments.of(
-                        new Reverse.ListNode(0, new Reverse.ListNode(1, new Reverse.ListNode(2, new Reverse.ListNode(3)))),
-                        new Reverse.ListNode(3, new Reverse.ListNode(2, new Reverse.ListNode(1, new Reverse.ListNode(0))))
+                        null,
+                        null
                 ),
                 Arguments.of(
-                        new Reverse.ListNode(),
-                        new Reverse.ListNode()
+                        new ListNode(),
+                        new ListNode()
+                ),
+                Arguments.of(
+                        new ListNode(0, new ListNode(1, new ListNode(2, new ListNode(3)))),
+                        new ListNode(3, new ListNode(2, new ListNode(1, new ListNode(0))))
                 )
         );
     }

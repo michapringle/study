@@ -14,7 +14,7 @@ final class Factory {
     }
 
     /**
-     * Effective Java Item 1, pp 5-10
+     * Effective Java 2nd Ed Item 1, pp 5-10
      * Use a static method to replace constructor usage
      */
     static Factory staticFactoryMethod() {
