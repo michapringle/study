@@ -24,6 +24,10 @@ final class ArrayProductTest {
 
         return Stream.of(
                 Arguments.of(
+                        new int[]{1, 2},
+                        new int[]{2, 1}
+                ),
+                Arguments.of(
                         new int[]{1, 2, 4, 6},
                         new int[]{48, 24, 12, 8}
                 ),

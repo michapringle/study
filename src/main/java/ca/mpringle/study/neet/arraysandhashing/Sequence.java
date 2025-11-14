@@ -20,6 +20,37 @@ final class Sequence {
     // 9:30 -> 11:33 -- looked up solution
     static int longestConsecutive(int[] nums) {
 
+        return longestConsecutiveNov10(nums);
+    }
+
+    static int longestConsecutiveNov10(int[] nums) {
+
+        if (nums == null || nums.length == 0) {
+            return 0;
+        }
+
+        HashSet<Integer> integers = new HashSet<>();
+
+        for (int num : nums) {
+            integers.add(num);
+        }
+
+        int longest = 1;
+
+        for (final Integer i : integers) {
+
+            int count = 1;
+            while (integers.contains(i + count)) {
+                count++;
+            }
+            longest = Math.max(longest, count);
+        }
+
+        return longest;
+    }
+
+    static int longestConsecutiveOriginal(int[] nums) {
+
         if (nums.length == 0) {
             return 0;
         }

@@ -13,7 +13,7 @@ final class ArrayProduct {
     // 3:16 -> 4:47, this included look-up of fast solution, slow solution was easy
     static int[] productExceptSelf(int[] nums) {
 
-        return productExceptSelfFast(nums);
+        return productExceptSelfSlowNov10(nums);
     }
 
     static int[] productExceptSelfFast(int[] nums) {
@@ -55,5 +55,20 @@ final class ArrayProduct {
         }
 
         return products;
+    }
+
+    static int[] productExceptSelfSlowNov10(int[] nums) {
+
+        final int[] result = new int[nums.length];
+
+        for (int i = 0; i < nums.length; i++) {
+            int product = 1;
+            for (int j = 0; j < nums.length; j++) {
+                product *= j == i ? 1 : nums[j];
+            }
+            result[i] = product;
+        }
+
+        return result;
     }
 }

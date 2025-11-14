@@ -23,6 +23,11 @@ final class ThreeSum {
     // 3:30 -> 4:00
     static List<List<Integer>> threeSum(final int[] nums) {
 
+        return threeSumNov10(nums);
+    }
+
+    static List<List<Integer>> threeSumOriginal(final int[] nums) {
+
         if (nums == null || nums.length < 3) {
             return new ArrayList<>();
         }
@@ -39,6 +44,28 @@ final class ThreeSum {
         }
         return new ArrayList<>(results);
     }
+
+    static List<List<Integer>> threeSumNov10(final int[] nums) {
+
+        final Set<List<Integer>> result = new HashSet<>();
+
+        if (nums == null) {
+            return new ArrayList<>();
+        }
+
+        for (int i = 0; i < nums.length; i++) {
+            for (int j = i + 1; j < nums.length; j++) {
+                for (int k = j + 1; k < nums.length; k++) {
+                    if (nums[i] + nums[j] + nums[k] == 0) {
+                        result.add(newSortedList(nums[i], nums[j], nums[k]));
+                    }
+                }
+            }
+        }
+
+        return new ArrayList<>(result);
+    }
+
 
     private static <T extends Comparable<T>> List<T> newSortedList(final T... ts) {
         return Arrays.stream(ts).sorted(Comparator.naturalOrder()).collect(Collectors.toList());

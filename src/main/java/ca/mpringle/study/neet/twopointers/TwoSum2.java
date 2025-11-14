@@ -20,6 +20,33 @@ final class TwoSum2 {
     // 12:05 -> 12:25
     static int[] twoSum(final int[] numbers, final int target) {
 
+        return twoSumNov11(numbers, target);
+    }
+
+    static int[] twoSumNov11(final int[] numbers, final int target) {
+
+        if (numbers == null || numbers.length == 1) {
+            return new int[]{};
+        }
+
+        for (int i = 0, j = numbers.length - 1; i < j; ) {
+
+            if (numbers[i] + numbers[j] == target) {
+                return new int[]{i + 1, j + 1};
+
+            } else if (numbers[i] + numbers[j] < target) {
+                i++;
+
+            } else {
+                j--;
+            }
+        }
+
+        return new int[]{};
+    }
+
+    static int[] twoSumOld(final int[] numbers, final int target) {
+
         if (numbers == null) {
             return new int[]{};
         }

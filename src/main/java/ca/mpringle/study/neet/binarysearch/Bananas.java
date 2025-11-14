@@ -23,6 +23,35 @@ final class Bananas {
      */
     static int minEatingSpeed(final int[] piles, final int hours) {
 
+        return minEatingSpeedNov10(piles, hours);
+    }
+
+    static int minEatingSpeedNov10(final int[] piles, final int hours) {
+
+        if (hours < 1 || hours < piles.length) {
+            return -1;
+        }
+
+        // the average of the entire pile is also the minimum
+        int maxRate = Arrays.stream(piles).max().getAsInt();
+        // the minimum rate can't be less than this
+        int rate = Math.max(0, (maxRate / hours) - 1);
+
+        long hoursSpentEating;
+        do {
+            hoursSpentEating = 0;
+            rate++;
+            for (int size : piles) {
+                hoursSpentEating += (int) Math.ceil(size * 1.0D / rate);
+            }
+
+        } while (hoursSpentEating > hours);
+
+        return rate;
+    }
+
+    static int minEatingSpeedOriginal(final int[] piles, final int hours) {
+
         if (hours < 1 || hours < piles.length) {
             return -1;
         }

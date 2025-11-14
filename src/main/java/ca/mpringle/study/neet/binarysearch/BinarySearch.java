@@ -18,6 +18,36 @@ final class BinarySearch {
      */
     static int search(final int[] nums, final int target) {
 
+        return searchNov11(nums, target);
+    }
+
+    static int searchNov11(final int[] nums, final int target) {
+
+        int low = 0;
+        int index = nums.length / 2;
+        int high = nums.length;
+
+        do {
+            if (nums[index] < target) {
+                low = index;
+                index = (index + high) / 2;
+
+            } else if (nums[index] > target) {
+                high = index;
+                index = (index + low) / 2;
+            }
+
+            if (nums[index] == target) {
+                return index;
+            }
+        } while (low < index && index < high);
+
+        return -1;
+    }
+
+
+    static int searchOld(final int[] nums, final int target) {
+
         final Index index = new Index(0, nums.length);
 
         while (target != nums[index.index()] && index.isValid()) {

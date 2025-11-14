@@ -27,7 +27,8 @@ final class MaxWaterTest {
                 Arguments.of(new int[]{1}, 0),
                 Arguments.of(new int[]{0, 1}, 0),
                 Arguments.of(new int[]{1, 7, 2, 5, 4, 7, 3, 6}, 36),
-                Arguments.of(new int[]{2, 2, 2}, 4)
+                Arguments.of(new int[]{2, 2, 2}, 4),
+                Arguments.of(new int[]{2, 5, 1, 1, 5, 2, 3}, 15)
         );
     }
 }

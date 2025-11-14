@@ -12,9 +12,9 @@ final class BananasTest {
 
     @ParameterizedTest
     @MethodSource("minEatingSpeedData")
-    void searchTest(final int[] piles, final int h, final int expected) {
+    void searchTest(final int[] piles, final int hours, final int expected) {
 
-        final int actual = Bananas.minEatingSpeed(piles, h);
+        final int actual = Bananas.minEatingSpeed(piles, hours);
 
         assertEquals(expected, actual);
     }
